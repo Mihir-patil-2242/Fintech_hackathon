@@ -1,5 +1,5 @@
 """
-Ultra-Minimal FinTech Platform Backend
+Finverse - Ultra-Minimal DeFi Platform Backend
 Guaranteed to work with minimal dependencies
 """
 
@@ -135,8 +135,8 @@ def get_ai_response(message: str) -> str:
 if HAS_FASTAPI:
     # Initialize FastAPI
     app = FastAPI(
-        title="FinTech Platform API",
-        description="Minimal FinTech platform with AI-powered features",
+        title="Finverse API",
+        description="Minimal DeFi platform with AI-powered features",
         version="2.0.0",
         docs_url="/docs",
         redoc_url="/redoc"
@@ -154,7 +154,7 @@ if HAS_FASTAPI:
     @app.get("/")
     async def root():
         return {
-            "message": "FinTech Platform API v2.0",
+            "message": "Finverse API v2.0",
             "status": "running",
             "mode": "minimal",
             "docs": "/docs",
@@ -177,7 +177,7 @@ if HAS_FASTAPI:
     async def get_nonce(wallet_address: str):
         import hashlib
         nonce = hashlib.sha256(f"{wallet_address}{time.time()}".encode()).hexdigest()[:16]
-        message = f"Welcome to FinTech Platform v2\nSign to authenticate your wallet\nNonce: {nonce}"
+        message = f"Welcome to Finverse v2\nSign to authenticate your wallet\nNonce: {nonce}"
         return {"message": message, "nonce": nonce}
 
     @app.post("/auth/login")
@@ -327,7 +327,7 @@ if HAS_FASTAPI:
         }
 
     def start_server():
-        print("🚀 Starting FinTech Platform API...")
+        print("🚀 Starting Finverse API...")
         print("📱 Frontend: http://localhost:3000")
         print("📚 API Docs: http://localhost:8000/docs")
         print("🔍 Alternative docs: http://localhost:8000/redoc")
@@ -393,7 +393,7 @@ else:
             self.wfile.write(json.dumps(response).encode())
 
     def start_server():
-        print("🚀 Starting FinTech Platform API (Fallback Mode)...")
+        print("🚀 Starting Finverse API (Fallback Mode)...")
         print("📚 API Docs: http://localhost:8000/docs")
         print("🌐 Health Check: http://localhost:8000/health")
         
